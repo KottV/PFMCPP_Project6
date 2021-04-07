@@ -58,12 +58,12 @@ Purpose:  This project will show you the difference between member functions and
 struct T
 {
     int value = 0;
-    char name;
+    std::string name;
 
-    T(int v, const char* pname)//1
+    T(int v, const char* pname) : name (pname)//1
     {
         value = v;//2
-        name = *pname;//3
+    //    name = *pname;//3
     }
 };
 
@@ -145,10 +145,8 @@ struct structName2
 int main()
 {
     
-    char alphaName = 'a';
-    T alpha(3 , &alphaName);                                             //6
-    char betaName = 'b';
-    T beta(2 , &betaName);  
+    T alpha(3 , "a");                                             //6
+    T beta(2 , "b");  
     
     structName1 f;                                            //7
     auto* smaller = f.compare(&alpha , &beta);                              //8
