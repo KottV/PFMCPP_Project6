@@ -23,13 +23,12 @@ Create a branch named Part2
 struct T
 {
     int value = 0;
-    char name; FIXME: 3) provide a member variable of type std::string in T that works with the *first* cout statement in main().
-         note the name of the variable used in the *first* cout statement in main()
+    std::string name;
 
-    T(int v, const char* pname)//1
+    T(int v, const char* pname) : name(pname) //1
     {
         value = v;//2
-        name = *pname;//3
+//        name = *pname;//3
     }
 };
 
@@ -111,10 +110,8 @@ struct structName2
 int main()
 {
     
-    char alphaName = 'a';
-    T alpha(3 , &alphaName);                                             //6
-    char betaName = 'b';
-    T beta(2 , &betaName);  
+    T alpha(3 , "alpha");//6
+    T beta(2 , "beta");  
     
     structName1 f;                                            //7
     auto* smaller = f.compare(&alpha , &beta);                              //8
