@@ -142,7 +142,7 @@ int main()
     structName1 f;                                            //7
     auto* smaller = f.compare(&alpha , &beta);                              //8
     if (smaller != nullptr)
-    std::cout << "the smaller one is << " << smaller->name << std::endl; //9
+    std::cout << "the smaller one is: " << smaller->name << std::endl; //9
     
     U x;
     float updatedValue = 5.f;
