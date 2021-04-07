@@ -71,8 +71,11 @@ struct structName1                                //4
 {
     T* compare(T* a, T* b) //5
     {
-        if( a->value < b->value ) return a;
-        if( a->value > b->value ) return b;
+        if (a != nullptr && b != nullptr)
+        {
+            if (a->value < b->value) return a;
+            if (a->value > b->value) return b;
+        }
         return nullptr;
     }
 };
@@ -83,18 +86,22 @@ struct U
 
     float multiple(float* updatedValue1)      //12
     {
-        std::cout << "U's value1 value: " << this->value1 << std::endl;
-        this->value1 = *updatedValue1;
-        std::cout << "U's value1 updated value: " << this->value1 << std::endl;
-        while (std::abs(this->value2 - this->value1) > 0.001f)
+        if (updatedValue1 != nullptr)
         {
-            /*
-             write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-             */
-            this->value2 += 0.05f;
+            std::cout << "U's value1 value: " << this->value1 << std::endl;
+            this->value1 = *updatedValue1;
+            std::cout << "U's value1 updated value: " << this->value1 << std::endl;
+            while (std::abs(this->value2 - this->value1) > 0.001f)
+            {
+                /*
+                 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+                 */
+                this->value2 += 0.05f;
+            }
+            std::cout << "U's value2 updated value: " << this->value2 << std::endl;
+            return this->value2 * this->value1;
         }
-        std::cout << "U's value2 updated value: " << this->value2 << std::endl;
-        return this->value2 * this->value1;
+        return 1;
     }
 };
 
@@ -102,18 +109,22 @@ struct structName2
 {
     static float multiple(U* that, float* updatedValue1)        //10
     {
-        std::cout << "U's value1 value: " << that->value1 << std::endl;
-        that->value1 = *updatedValue1;
-        std::cout << "U's value1 updated value: " << that->value1 << std::endl;
-        while (std::abs(that->value2 - that->value1) > 0.001f)
+        if (that != nullptr && updatedValue1 != nullptr)
         {
-            /*
-             write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-             */
-            that->value2 += 0.05f;
+            std::cout << "U's value1 value: " << that->value1 << std::endl;
+            that->value1 = *updatedValue1;
+            std::cout << "U's value1 updated value: " << that->value1 << std::endl;
+            while (std::abs(that->value2 - that->value1) > 0.001f)
+            {
+                /*
+                 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+                 */
+                that->value2 += 0.05f;
+            }
+            std::cout << "U's value2 updated value: " << that->value2 << std::endl;
+            return that->value2 * that->value1;
         }
-        std::cout << "U's value2 updated value: " << that->value2 << std::endl;
-        return that->value2 * that->value1;
+        return 1;
     }
 };
         
@@ -142,7 +153,7 @@ int main()
     structName1 f;                                            //7
     auto* smaller = f.compare(&alpha , &beta);                              //8
     if (smaller != nullptr)
-    std::cout << "the smaller one is: " << smaller->name << std::endl; //9
+        std::cout << "the smaller one is: " << smaller->name << std::endl; //9
     
     U x;
     float updatedValue = 5.f;
@@ -151,11 +162,3 @@ int main()
     U y;
     std::cout << "[member func] y's multiplied values: " << y.multiple( &updatedValue ) << std::endl;
 }
-
-        
-        
-        
-        
-        
-        
-        
