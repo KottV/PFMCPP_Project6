@@ -79,7 +79,7 @@ struct structName1                                //4
 
 struct U
 {
-    float value1 { 2 }, value2 { 5 };
+    float value1 { 0 }, value2 { 0 };
 
     float multiple(float* updatedValue1)      //12
     {
