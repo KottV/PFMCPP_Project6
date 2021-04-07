@@ -54,16 +54,16 @@ Purpose:  This project will show you the difference between member functions and
 
 #include <iostream>
 #include <string>
-/*
+
 struct T
 {
     int value = 0;
-    char name = 'a';
+    char name;
 
-    T(int v, const char* &name)//1
+    T(int v, const char* pname)//1
     {
-        this->value = v;//2
-        this->name = &name;//3
+        value = v;//2
+        name = *pname;//3
     }
 };
 
@@ -76,10 +76,10 @@ struct structName1                                //4
         return nullptr;
     }
 };
-*/
+
 struct U
 {
-    float value1 { 0 }, value2 { 0 };
+    float value1 { 2 }, value2 { 5 };
 
     float multiple(float* updatedValue1)      //12
     {
@@ -103,7 +103,7 @@ struct structName2
     static float multiple(U* that, float* updatedValue1)        //10
     {
         std::cout << "U's value1 value: " << that->value1 << std::endl;
-        that->value1 = &updatedValue1;
+        that->value1 = *updatedValue1;
         std::cout << "U's value1 updated value: " << that->value1 << std::endl;
         while (std::abs(that->value2 - that->value1) > 0.001f)
         {
@@ -114,7 +114,7 @@ struct structName2
         }
         std::cout << "U's value2 updated value: " << that->value2 << std::endl;
         return that->value2 * that->value1;
-    };
+    }
 };
         
 /*
@@ -133,18 +133,20 @@ struct structName2
 
 int main()
 {
-    /*
-    T alpha(1 , 'a');                                             //6
-    T beta(2 , 'b');                                             //6
+    
+    char alphaName = 'a';
+    T alpha(3 , &alphaName);                                             //6
+    char betaName = 'b';
+    T beta(2 , &betaName);  
     
     structName1 f;                                            //7
-    auto* smaller = f.compare(alpha , beta);                              //8
+    auto* smaller = f.compare(&alpha , &beta);                              //8
     if (smaller != nullptr)
     std::cout << "the smaller one is << " << smaller->name << std::endl; //9
-*/    
+    
     U x;
     float updatedValue = 5.f;
-    std::cout << "[static func] x's multiplied values: " << structName2::multiple(x , updatedValue) << std::endl;                  //11
+    std::cout << "[static func] x's multiplied values: " << structName2::multiple(&x , &updatedValue) << std::endl;                  //11
     
     U y;
     std::cout << "[member func] y's multiplied values: " << y.multiple( &updatedValue ) << std::endl;
