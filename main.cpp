@@ -1,4 +1,4 @@
-/*
+﻿/*
  Project 6: Part 2 / 2
  Video: Chapter 3 Part 3
 
@@ -47,50 +47,42 @@ struct structName1                                //4
 
 struct U
 {
-    float value1 { 0 }, value2 { 0 };
+	float value1{ 0 }, value2{ 0 };
 
-    float multiple(float* updatedValue1)      //12
-    {
-        if (updatedValue1 != nullptr)
-        {
-            std::cout << "U's value1 value: " << this->value1 << std::endl;
-            this->value1 = *updatedValue1;
-            std::cout << "U's value1 updated value: " << this->value1 << std::endl;
-            while (std::abs(this->value2 - this->value1) > 0.001f)
-            {
-                /*
-                 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-                 */
-                this->value2 += 0.05f;
-            }
-            std::cout << "U's value2 updated value: " << this->value2 << std::endl;
-            return this->value2 * this->value1;
-        }
-        return 1;
-    }
+	float multiple(const float& updatedValue1)      //12
+	{
+		std::cout << "U's value1 value: " << this->value1 << std::endl;
+		this->value1 = updatedValue1;
+		std::cout << "U's value1 updated value: " << this->value1 << std::endl;
+		while (std::abs(this->value2 - this->value1) > 0.001f)
+		{
+			/*
+			 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+			 */
+			this->value2 += 0.05f;
+		}
+		std::cout << "U's value2 updated value: " << this->value2 << std::endl;
+		return this->value2 * this->value1;
+	}
 };
 
 struct structName2
 {
-    static float multiple(U* that, float* updatedValue1)        //10
-    {
-        if (that != nullptr && updatedValue1 != nullptr)
-        {
-            std::cout << "U's value1 value: " << that->value1 << std::endl;
-            that->value1 = *updatedValue1;
-            std::cout << "U's value1 updated value: " << that->value1 << std::endl;
-            while (std::abs(that->value2 - that->value1) > 0.001f)
-            {
-                /*
-                 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-                 */
-                that->value2 += 0.05f;
-            }
-            std::cout << "U's value2 updated value: " << that->value2 << std::endl;
-            return that->value2 * that->value1;
-        }
-        return 1;
-    }
+	static float multiple(U& that, const float& updatedValue1)        //10
+	{
+		std::cout << "U's value1 value: " << that.value1 << std::endl;
+		that.value1 = updatedValue1;
+		std::cout << "U's value1 updated value: " << that.value1 << std::endl;
+		while (std::abs(that.value2 - that.value1) > 0.001f)
+		{
+			/*
+			 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+			 */
+			that.value2 += 0.05f;
+		}
+		std::cout << "U's value2 updated value: " << that.value2 << std::endl;
+		return that.value2 * that.value1;
+	}
 };
         
 /*
@@ -120,8 +112,8 @@ int main()
     
     U x;
     float updatedValue = 5.f;
-    std::cout << "[static func] x's multiplied values: " << structName2::multiple(&x , &updatedValue) << std::endl;                  //11
+    std::cout << "[static func] x's multiplied values: " << structName2::multiple(x , updatedValue) << std::endl;                  //11
     
     U y;
-    std::cout << "[member func] y's multiplied values: " << y.multiple( &updatedValue ) << std::endl;
+    std::cout << "[member func] y's multiplied values: " << y.multiple( updatedValue ) << std::endl;
 }
