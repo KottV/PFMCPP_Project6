@@ -34,7 +34,7 @@ struct T
 
 struct structName1                                //4
 {
-    T* compare(T* a, T* b) //5
+    T* compare(T* a, T* b) FIXME convert all of the pointer usage (except for 'const char*') to reference types WHERE POSSIBLE.  You can't convert the return type, but you can convert the function parameters.
     {
         if (a != nullptr && b != nullptr)
         {
