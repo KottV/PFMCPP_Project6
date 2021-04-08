@@ -34,13 +34,13 @@ struct T
 
 struct structName1                                //4
 {
-    T* compare(T* a, T* b) FIXME convert all of the pointer usage (except for 'const char*') to reference types WHERE POSSIBLE.  You can't convert the return type, but you can convert the function parameters.
+    T* compare(T& a, T& b)// FIXME convert all of the pointer usage (except for 'const char*') to reference types WHERE POSSIBLE.  You can't convert the return type, but you can convert the function parameters.
     {
-        if (a != nullptr && b != nullptr)
-        {
-            if (a->value < b->value) return a;
-            if (a->value > b->value) return b;
-        }
+        //if (a != nullptr && b != nullptr)
+        //{
+            if (a.value < b.value) return &a;
+            if (a.value > b.value) return &b;
+        //}
         return nullptr;
     }
 };
@@ -103,10 +103,10 @@ int main()
 {
     
     T alpha(3 , "alpha");//6
-    T beta(2 , "beta");  
+    T beta(32 , "beta");  
     
     structName1 f;                                            //7
-    auto* smaller = f.compare(&alpha , &beta);                              //8
+    auto* smaller = f.compare(alpha , beta);                              //8
     if (smaller != nullptr)
         std::cout << "the smaller one is: " << smaller->name << std::endl; //9
         
