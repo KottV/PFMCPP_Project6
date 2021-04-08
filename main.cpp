@@ -28,7 +28,6 @@ struct T
     T(int v, const char* pname) : name(pname) //1
     {
         value = v;//2
-        //        name = *pname;//3
     }
 };
 
