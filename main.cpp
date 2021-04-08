@@ -1,18 +1,18 @@
 ﻿/*
-Project 6: Part 2 / 2
-Video: Chapter 3 Part 3
-
-Create a branch named Part2
-
-References
-
-
-1) convert all of the pointer usage (except for 'const char*') to reference types or 
-   const reference types **>>> WHERE POSSIBLE <<<**
-       hint: There is no reference equivalent to nullptr.  
-       if a pointer (including nullptr) is being returned anywhere, don't try to convert it to a reference.
-
-2) After you finish, click the [run] button.  Clear up any errors or warnings as best you can.
+ Project 6: Part 2 / 2
+ Video: Chapter 3 Part 3
+ 
+ Create a branch named Part2
+ 
+ References
+ 
+ 
+ 1) convert all of the pointer usage (except for 'const char*') to reference types or 
+    const reference types **>>> WHERE POSSIBLE <<<**
+        hint: There is no reference equivalent to nullptr.  
+        if a pointer (including nullptr) is being returned anywhere, don't try to convert it to a reference.
+ 
+ 2) After you finish, click the [run] button.  Clear up any errors or warnings as best you can.
 
 */
 
@@ -86,17 +86,17 @@ struct structName2
 };
 
 /*
-MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
-
-Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
-
-If you didn't already: 
-   Make a pull request after you make your first commit
-   pin the pull request link and this repl.it link to our DM thread in a single message.
-
-send me a DM to review your pull request when the project is ready for review.
-
-Wait for my code review.
+  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
+  
+  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
+ 
+ If you didn't already: 
+    Make a pull request after you make your first commit
+    pin the pull request link and this repl.it link to our DM thread in a single message.
+ 
+ send me a DM to review your pull request when the project is ready for review.
+ 
+ Wait for my code review.
 */
 
 int main()
